@@ -1,40 +1,21 @@
-text = input("Enter a Paragraph : ")
+paragraph = input("Enter a paragraph: ")
 
-single = []
-words = text.split()
-duplicate = []
+words = paragraph.split()
 
-print("List of words :", words)
+total_words = len(words)
+unique_words = len(set(words))
 
-print("Number of words :-", len(words))
+longest_word = max(words, key=len)
+shortest_word = min(words, key=len)
 
-for word in words:
-    frequency = words.count(word)
-    if frequency == 1 and word not in single:
-        single.append(word)
+print("\n--- Result ---")
+print("Total number of words:", total_words)
+print("Number of unique words:", unique_words)
+print("Longest word:", longest_word)
+print("Shortest word:", shortest_word)
 
-print("Total Unique words :", single)
+print("Words appearing more than once:")
 
-big = words[0]
-
-for word in words:
-    if len(word) > len(big):
-        big = word
-
-print("Longest Word in Paragraph :", big)
-
-small = words[0]
-
-for word in words:
-    if len(word) < len(small):
-        small = word
-
-print("Smallest Word in Paragraph :", small)
-
-for word in words:
-    frequency = words.count(word)
-
-    if frequency > 1 and word not in duplicate:
-        duplicate.append(word)
-
-print("Repeated Words :-", duplicate)
+for word in set(words):
+    if words.count(word) > 1:
+        print(word)
